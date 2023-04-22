@@ -53,6 +53,16 @@ namespace RtspClientSharp.Sdp
                     ParseAttributesLine(line);
             }
 
+            List<RtspMediaTrackInfo> results = new List<RtspMediaTrackInfo>();
+            foreach (var fi in _payloadFormatNumberToInfoMap.Values)
+            {
+                if (fi.TrackName != null && fi.CodecInfo != null)
+                {
+                    var rtspMediaTrackInfo = new RtspMediaTrackInfo(fi.TrackName, fi.CodecInfo, fi.SamplesFrequency);
+                    results.Add(rtspMediaTrackInfo);
+                }
+            }
+
             return _payloadFormatNumberToInfoMap.Values
                 .Where(fi => fi.TrackName != null && fi.CodecInfo != null)
                 .Select(fi => new RtspMediaTrackInfo(fi.TrackName, fi.CodecInfo, fi.SamplesFrequency));
@@ -325,6 +335,9 @@ namespace RtspClientSharp.Sdp
                 case 26:
                     codecInfo = new MJPEGCodecInfo();
                     break;
+                case 96:
+                    codecInfo = new PlainTextMetadataInfo();
+                    break;
                 case 105:
                     codecInfo = new H264CodecInfo();
                     break;
@@ -335,6 +348,9 @@ namespace RtspClientSharp.Sdp
 
         private static CodecInfo TryCreateCodecInfo(string codecName, int samplesFrequency, int channels)
         {
+            if (codecName == "SMPTE336M")
+                return new PlainTextMetadataInfo();
+
             if (codecName == "JPEG")
                 return new MJPEGCodecInfo();
 

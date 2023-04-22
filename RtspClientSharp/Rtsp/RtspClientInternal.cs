@@ -332,10 +332,10 @@ namespace RtspClientSharp.Rtsp
         {
             foreach (RtspMediaTrackInfo track in tracks.OfType<RtspMediaTrackInfo>())
             {
-                if (track.Codec is VideoCodecInfo && (_connectionParameters.RequiredTracks & RequiredTracks.Video) != 0)
-                    yield return track;
-                else if (track.Codec is AudioCodecInfo &&
-                         (_connectionParameters.RequiredTracks & RequiredTracks.Audio) != 0)
+                //if (track.Codec is VideoCodecInfo && (_connectionParameters.RequiredTracks & RequiredTracks.Video) != 0)
+                //    yield return track;
+                //else if (track.Codec is AudioCodecInfo &&
+                //         (_connectionParameters.RequiredTracks & RequiredTracks.Audio) != 0)
                     yield return track;
             }
         }

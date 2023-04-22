@@ -1,8 +1,10 @@
 ﻿using System;
+using Detectors.Libraries.RtspClientSharp.RtspClientSharp.MediaParsers;
 using RtspClientSharp.Codecs;
 using RtspClientSharp.Codecs.Audio;
 using RtspClientSharp.Codecs.Video;
 using RtspClientSharp.RawFrames;
+using RtspClientSharp.Sdp;
 
 namespace RtspClientSharp.MediaParsers
 {
@@ -48,6 +50,8 @@ namespace RtspClientSharp.MediaParsers
                     return new G726AudioPayloadParser(g726CodecInfo);
                 case PCMCodecInfo pcmCodecInfo:
                     return new PCMAudioPayloadParser(pcmCodecInfo);
+                case PlainTextMetadataInfo metadataInfo:
+                    return new PlainTextMetadataInfoParser();
                 default:
                     throw new ArgumentOutOfRangeException(nameof(codecInfo),
                         $"Unsupported codec: {codecInfo.GetType().Name}");
