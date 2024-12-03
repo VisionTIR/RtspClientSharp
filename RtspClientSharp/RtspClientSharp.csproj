@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Authors>Kirill Bogdanov</Authors>
     <RepositoryUrl>https://github.com/BogdanovKirill/RtspClientSharp</RepositoryUrl>
@@ -27,31 +26,24 @@ More info: https://github.com/BogdanovKirill/RtspClientSharp/issues/49</PackageR
     <AssemblyOriginatorKeyFile>signkey.pfx</AssemblyOriginatorKeyFile>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>bin\Release\netstandard2.0\RtspClientSharp.xml</DocumentationFile>
   </PropertyGroup>
-  
   <PropertyGroup Condition="'$(Configuration)'=='Publish'">
     <DocumentationFile>bin\Release\netstandard2.0\RtspClientSharp.xml</DocumentationFile>
-	<SignAssembly>true</SignAssembly>
-	<DefineConstants>TRACE;PUBLISH</DefineConstants>
+    <SignAssembly>true</SignAssembly>
+    <DefineConstants>TRACE;PUBLISH</DefineConstants>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <DocumentationFile>bin\Release\netstandard2.0\RtspClientSharp.xml</DocumentationFile>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Publish|x86'">
     <DocumentationFile>bin\Release\netstandard2.0\RtspClientSharp.xml</DocumentationFile>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <DocumentationFile>bin\Release\netstandard2.0\RtspClientSharp.xml</DocumentationFile>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Publish|x64'">
     <DocumentationFile>bin\Release\netstandard2.0\RtspClientSharp.xml</DocumentationFile>
   </PropertyGroup>
-
 </Project>
